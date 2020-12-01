@@ -62,7 +62,7 @@
 		
 		}else{
 			
-			exit('Não foi passado nenhum paramentro na função SE do tipo array');
+			exit('Não foi passado nenhum paramentro na função SE do tipo array o qualquer parametro');
 			
 		}
 		
