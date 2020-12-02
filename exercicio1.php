@@ -5,69 +5,49 @@
 	echo "Aula número 1"."<br />";
 	$ano = array("2020","2019","2018","2017","2016");
 	$mes = array("Jan","Fev","Mar","Abr","Mai","Jun","Jul","Ago","Set","Out","Nov","Dez");
-	$tem = array(30,25,32,31,15,15,18,20,15,17,20,23,
-				 31,26,31,30,15,15,18,20,15,17,20,23,
-				 32,27,30,29,15,15,18,20,15,17,20,23,
-				 33,28,29,28,15,15,18,20,15,17,20,23,
-				 34,29,29,27,15,15,18,20,15,17,20,23
+	$tem = array(1,2,3,4,5,6,7,8,9,10,11,12,
+				 13,14,15,16,17,18,19,20,21,22,23,24,
+				 25,26,27,28,29,30,31,32,33,34,35,36,
+				 37,38,39,40,41,42,43,44,45,46,47,48,
+				 49,50,51,52,53,54,55,56,57,58,59,60
 				);
 	
 	function se($ano = null, $mes = null, $tem = null){
-		
-		if(@count($ano) > 0 ){
-			
-			foreach($ano as $k => $v){
-				
-				print($v."&nbsp;|&nbsp");
-				
-				for($i = 0; $i < count($mes); $i++){
-				
-					print("&nbsp;".$mes[$i]."&nbsp;|");
-				
-				}
-				
-				print("<br />");
-				
-				for($x = 0; (count($tem)); $x++){//$tem == 60
-					
-					if($x == 11 && $v == 2020){
-						print("&nbsp;".$tem[$x]."&nbsp;|&nbsp");
-						print("<br/>");
-						exit($x);
-					}elseif($x == 23 && $v == 2019){
-						print("&nbsp;".$tem[$x]."&nbsp;|&nbsp");
-						print("<br/>");
-					}elseif($x == 35 && $v == 2018){
-						print("&nbsp;".$tem[$x]."&nbsp;|&nbsp");
-						print("<br/>");
-					}elseif($x == 47 && $v == 2017){
-						print("&nbsp;".$tem[$x]."&nbsp;|&nbsp");
-						print("<br/>");
-					}elseif($x == 59 && $v == 2016){
-						print("&nbsp;".$tem[$x]."&nbsp;|&nbsp");
-						print("<br/>");
-					}elseif($x == 0){
-						print("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;".$tem[$x]."&nbsp;|&nbsp");
-					}else{
-						print("&nbsp;&nbsp;".$tem[$x]."&nbsp;|&nbsp");
-					}
-					
-					if($x == 59){
-						break;
-					}else{
-					continue;
-					}
-				}
-			}
-		
-		}else{
-			
-			exit('Não foi passado nenhum paramentro na função SE do tipo array o qualquer parametro');
-			
+		$cont = 0;
+		foreach($mes as $k => $v){
+			print(($cont == 0) ? ("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;".$v."&nbsp;|") : ($v."&nbsp;|"));
+			$cont++;
 		}
-		
+		$te = 0;
+		for($a = 0; $a < count($ano); $a++){
+			
+			print("<label style='border-radius:25px ;border:solid 1px red;'>".$te."</label><br/>");
+			print("<br/>".$ano[$a]);
+			
+			/*for($t = $te; $t < ($te + 12); $t++){
+				print("<label>".$tem[$t]."</label>");//ok
+				$te = $t++;
+				
+			}*/
+			print("<br/>");
+			
+		}	
 	}
+	
+	function tabela(int $linhas, int $colunas){
+		/*vamos definir uma tabela de duas linhas e duas colunas*/
+		print("<table border='1'>");/*definindo a tag principal da criação de uma tabela*/
+		for($l = 1; $l <= $linhas; $l++){
+			print("<tr>");/*Aqui é a formação das linhas*/
+			for($c = 1; $c <= $colunas; $c++){
+				print("<td>Linha ".$l." Coluna ".$c."</td>");
+			}
+			print("</tr>");
+		}
+		print("</table>");
+	}
+	
 	se($ano,$mes,$tem);
-
+	tabela(6,10);
 	
 ?>
