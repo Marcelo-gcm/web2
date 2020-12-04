@@ -34,20 +34,40 @@
 		}	
 	}
 	
-	function tabela(int $linhas, int $colunas){
+	function tabela($ano = null, $mes = null){
 		/*vamos definir uma tabela de duas linhas e duas colunas*/
 		print("<table border='1'>");/*definindo a tag principal da criação de uma tabela*/
-		for($l = 1; $l <= $linhas; $l++){
-			print("<tr>");/*Aqui é a formação das linhas*/
-			for($c = 1; $c <= $colunas; $c++){
-				print("<td>Linha ".$l." Coluna ".$c."</td>");
+		for($l = 1; $l <= count($ano); $l++){
+			print("<tr>");
+			if($l == 1){/*Aqui ele entra só uma vez e escreve os meses*/
+				print("<td>Anos</td>");
+				for($m = 0; $m < count($mes); $m++){
+					print("<td>".$mes[$m]."</td>");
+				}
+				print("</tr>");
 			}
-			print("</tr>");
+			
 		}
 		print("</table>");
 	}
 	
 	se($ano,$mes,$tem);
-	tabela(6,10);
+	tabela($ano,$mes);
+?>
+
+<form name="form1" id="form1" method="POST" action="exercicio1.php"> 
+
+	Nome <input type="text" name="nome" id="nome"  />
+	<input type="submit" name="bt" id="bt" value="Envia" />
 	
+</form>
+<?php
+	if(!empty(($_POST["nome"]))){
+		
+		print("Hello ".$_POST["nome"]);
+		
+	}else{
+		
+		print("No aguardo do seu POST");
+	}
 ?>
